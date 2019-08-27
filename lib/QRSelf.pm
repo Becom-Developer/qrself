@@ -3,19 +3,37 @@ use Mojo::Base 'Mojolicious';
 
 # This method will run once at server start
 sub startup {
-  my $self = shift;
+    my $self = shift;
+    my $mode = $self->mode;
 
-  # Load configuration from hash returned by "my_app.conf"
-  my $config = $self->plugin('Config');
+    # my $moniker = $self->moniker;
+    my $moniker = 'qrself';
 
-  # Documentation browser under "/perldoc"
-  $self->plugin('PODRenderer') if $config->{perldoc};
+    my $home   = $self->home;
+    my $common = $home->child( 'etc', "$moniker.common.conf" )->to_string;
+    my $conf   = $home->child( 'etc', "$moniker.$mode.conf" )->to_string;
 
-  # Router
-  my $r = $self->routes;
+    # 設定ファイル (読み込む順番に注意)
+    $self->plugin( Config => +{ file => $common } );
+    $self->plugin( Config => +{ file => $conf } );
+    my $config = $self->config;
 
-  # Normal route to controller
-  $r->get('/')->to('example#welcome');
+    # Documentation browser under "/perldoc"
+    $self->plugin('PODRenderer') if $config->{perldoc};
+
+    # コマンドをロードするための他の名前空間
+    push @{ $self->commands->namespaces }, 'QRSelf::Command';
+
+    $self->helper(
+        model => sub { QRSelf::Model->new( +{ conf => $config } ); } );
+
+    $self->helper( site_name => sub { 'QRSelf'; } );
+
+    # Router
+    my $r = $self->routes;
+
+    # Normal route to controller
+    $r->get('/')->to('example#welcome');
 }
 
 1;
