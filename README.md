@@ -6,6 +6,8 @@ qrself - QRコードを使って自己紹介をするアプリ
 
 ## URL
 
+- <https://qrself.becom.co.jp> - 開発版
+
 ## SETUP
 
 ## START APP
