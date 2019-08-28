@@ -234,7 +234,7 @@ $ curl -v https://qrself.becom.co.jp
 url 暫定案
 
 - サービス紹介ページ
-    - GET - `/potal` - index サービス紹介ペーシ
+    - GET - `/portal` - index サービス紹介ペーシ
 - 認証 - auth
     - GET - `/auth/create` - create - ユーザー登録画面
     - GET - `/auth/:id/edit` - edit ユーザー情報更新画面
@@ -450,3 +450,4 @@ CREATE TABLE friend_category_relation (                         -- 仲間情報�
 - <https://metacpan.org/pod/Imager::QRCode> -
 - <https://www.qrcode.com/> -
 - <http://twilio.kddi-web.com/> -
+- <https://wrapbootstrap.com/theme/macbeath-3-in-1-admin-front-end-e-com-WB0G69690> -

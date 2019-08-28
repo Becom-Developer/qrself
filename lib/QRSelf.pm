@@ -1,7 +1,7 @@
 package QRSelf;
 use Mojo::Base 'Mojolicious';
+use QRSelf::Model;
 
-# This method will run once at server start
 sub startup {
     my $self = shift;
     my $mode = $self->mode;
@@ -31,9 +31,7 @@ sub startup {
 
     # Router
     my $r = $self->routes;
-
-    # Normal route to controller
-    $r->get('/')->to('example#welcome');
+    $r->get('/')->to('Portal#index');
 }
 
 1;

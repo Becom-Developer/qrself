@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <!-- Title here -->
+  <title><%= title %></title>
+  <!-- Description, Keywords and Author -->
+  <meta name="description" content="Your description">
+  <meta name="keywords" content="Your,Keywords">
+  <meta name="author" content="ResponsiveWebInc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Styles -->
+  <!-- Bootstrap CSS -->
+  <link href="<%= $public_path %>css/bootstrap.min.css" rel="stylesheet">
+  <!-- Pretty Photo -->
+  <link href="<%= $public_path %>css/prettyPhoto.css" rel="stylesheet">
+  <!-- Flex slider -->
+  <link href="<%= $public_path %>css/flexslider.css" rel="stylesheet">
+  <!-- Parallax slider -->
+  <link rel="stylesheet" href="<%= $public_path %>css/slider.css">
+  <!-- Owl Carousel -->
+  <link rel="stylesheet" href="<%= $public_path %>css/owl.carousel.css">
+  <!-- Font awesome CSS -->
+  <link href="<%= $public_path %>css/font-awesome.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="<%= $public_path %>css/style.css" rel="stylesheet">
+  <!-- Stylesheet for Color -->
+  <link href="<%= $public_path %>css/red.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="<%= $public_path %>img/favicon/favicon.png">
+</head>
+
+<body>
+  <!-- Header starts -->
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Logo. Use class "color" to add color to the text. -->
+          <div class="logo">
+            <h1><a href="<%= $public_path %>index.html">QR<span class="color bold">Self</span></a></h1>
+            <p class="meta">スマホを使ってQRコードで手軽に自己紹介</p>
+            <p class=""><a href="/auth/login"></i>QRSelfアプリはこっち</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <%= content %>
+
+  <!-- Footer starts -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="widget">
+                <h5>Contact</h5>
+                <hr />
+                <p>こちらは試験的に作成されたものです、不具合など連絡は下記にお願いします</p>
+                <hr />
+                <i class="fa fa-home"></i> &nbsp; 福岡県福岡市博多区吉塚５丁目４番２３－２０５号
+                <hr />
+                <i class="fa fa-envelope-o"></i> &nbsp; <a href="mailto:#">info@becom.co.jp</a>
+                <hr />
+                <div class="social">
+                  <a href="https://twitter.com/becom_inc" target="_blank"><i class="fa fa-twitter twitter"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <!-- Copyright info -->
+          <p class="copy">Copyright &copy; 2019 | <a href="https://www.becom.co.jp/" target="_blank">Becom Ltd</a> - <a href="/">Home</a></p>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </footer>
+  <!-- Footer ends -->
+  <!-- Scroll to top -->
+  <span class="totop"><a href="#"><i class="fa fa-chevron-up"></i></a></span>
+  <!-- Javascript files -->
+  <!-- jQuery -->
+  <script src="<%= $public_path %>js/jquery.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="<%= $public_path %>js/bootstrap.min.js"></script>
+  <!-- Isotope, Pretty Photo JS -->
+  <script src="<%= $public_path %>js/jquery.isotope.js"></script>
+  <script src="<%= $public_path %>js/jquery.prettyPhoto.js"></script>
+  <!-- Filter for support page -->
+  <script src="<%= $public_path %>js/filter.js"></script>
+  <!-- Flex slider -->
+  <script src="<%= $public_path %>js/jquery.flexslider-min.js"></script>
+  <!-- Parallax Slider -->
+  <script src="<%= $public_path %>js/jquery.cslider.js"></script>
+  <!-- Parallax slider extra -->
+  <script src="<%= $public_path %>js/modernizr.custom.28468.js"></script>
+  <!-- Owl Carousel -->
+  <script src="<%= $public_path %>js/owl.carousel.min.js"></script>
+  <!-- Respond JS for IE8 -->
+  <script src="<%= $public_path %>js/respond.min.js"></script>
+  <!-- HTML5 Support for IE -->
+  <script src="<%= $public_path %>js/html5shiv.js"></script>
+  <!-- Custom JS -->
+  <script src="<%= $public_path %>js/custom.js"></script>
+</body>
+
+</html>
