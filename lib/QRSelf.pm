@@ -29,9 +29,51 @@ sub startup {
 
     $self->helper( site_name => sub { 'QRSelf'; } );
 
+    # ルーティング前に共通して実行
+    $self->hook(
+        before_dispatch => sub {
+            my $c   = shift;
+            my $url = $c->req->url;
+
+            $self->helper( login_user => sub {undef} );
+
+            # セッション情報からログイン者の情報を取得
+            # my $params = +{ login_id => $c->session('user') };
+            # my $model = $self->model->auth->req_params($params);
+
+            # if ( my $login_user = $model->session_check ) {
+            #     $self->helper( login_user => sub {$login_user} );
+            # }
+
+            # # 認証保護されたページ
+            # if ( $url =~ m{^/auth/plugin.*} ) {
+            #     return $c->redirect_to('/') if !$self->login_user;
+            #     return $c->redirect_to('/')
+            #         if !$self->login_user->is_admin_function;
+            # }
+        }
+    );
+
     # Router
-    my $r = $self->routes;
+    my $r    = $self->routes;
+    my $u_id = [ user_id => qr/[0-9]+/ ];
+
     $r->get('/')->to('Portal#index');
+
+    # auth (認証)
+    my $auth_u = $r->under('/auth');
+    my $auth_d = 'Auth#';
+    $auth_u->get('/create')->to( $auth_d . 'create' );
+    $auth_u->get( '/:user_id/edit', $u_id )->to( $auth_d . 'edit' );
+    $auth_u->get( '/:user_id',      $u_id )->to( $auth_d . 'show' );
+    $auth_u->get('/login')->to( $auth_d . 'login' );
+    $auth_u->get('/logout')->to( $auth_d . 'logout' );
+    $auth_u->get('/remove')->to( $auth_d . 'remove' );
+    $auth_u->post('/login')->to( $auth_d . 'login' );
+    $auth_u->post('/logout')->to( $auth_d . 'logout' );
+    $auth_u->post( '/:user_id/update', $u_id )->to( $auth_d . 'update' );
+    $auth_u->post( '/:user_id/remove', $u_id )->to( $auth_d . 'remove' );
+    $auth_u->post('')->to( $auth_d . 'store' );
 }
 
 1;

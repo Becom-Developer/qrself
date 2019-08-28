@@ -233,20 +233,6 @@ $ curl -v https://qrself.becom.co.jp
 
 url 暫定案
 
-- サービス紹介ページ
-    - GET - `/portal` - index サービス紹介ペーシ
-- 認証 - auth
-    - GET - `/auth/create` - create - ユーザー登録画面
-    - GET - `/auth/:id/edit` - edit ユーザー情報更新画面
-    - GET - `/auth/:id` - show ユーザー情報詳細
-    - GET - `/auth/login` - login - ログイン入力画面
-    - GET - `/auth/logout` - logout - ユーザーログアウト画面
-    - GET - `/auth/remove` - remove ユーザー削除画面
-    - POST - `/auth/login` - login - ユーザーログイン実行
-    - POST - `/auth/logout` - logout - ユーザーログアウト実行
-    - POST - `/auth/:id/update` - update ユーザー情報更新実行
-    - POST - `/auth/:id/remove` - remove ユーザー削除実行
-    - POST - `/auth` - store ユーザー新規登録実行
 - 自己紹介カード - card
     - GET - `/card` - index 自己紹介カードの一覧
     - GET - `/card/:id/qr` - qr 自己紹介ページのQRコード表示

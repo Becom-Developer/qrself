@@ -39,7 +39,7 @@
         <div class="col-md-12">
           <!-- Logo. Use class "color" to add color to the text. -->
           <div class="logo">
-            <h1><a href="<%= $public_path %>index.html">QR<span class="color bold">Self</span></a></h1>
+            <h1><a href="/">QR<span class="color bold">Self</span></a></h1>
             <p class="meta">スマホを使ってQRコードで手軽に自己紹介</p>
             <p class=""><a href="/auth/login"></i>QRSelfアプリはこっち</a></p>
           </div>

@@ -1,9 +1,18 @@
 package QRSelf::Controller::Auth;
 use Mojo::Base 'QRSelf::Controller::Base';
 
-sub index {
-    my $self = shift;
-    $self->render(text => 'index');
+sub create {
+    my $self        = shift;
+    my $public_path = $self->config->{public_path}->{macbeath};
+    my $template    = 'auth/create';
+    $self->stash(
+        public_path => $public_path,
+        template    => $template,
+        format      => 'html',
+        handler     => 'ep',
+
+    );
+    $self->render();
     return;
 }
 
