@@ -19,6 +19,12 @@ sub common {
         500 => '処理を実行しました',
         510 => '処理をできませんでした',
         520 => '処理済みです',
+        600 => 'ログインしました',
+        610 => 'ログインできません',
+        620 => 'ログイン済みです',
+        700 => 'ログアウトしました',
+        710 => 'ログアウトできません',
+        720 => 'ログアウト済みです',
     };
 
     my $constant = +{
@@ -35,6 +41,12 @@ sub common {
         DONE_PROC       => 500,
         NOT_PROC        => 510,
         PROCESSED       => 520,
+        DONE_LOGIN      => 600,
+        NOT_LOGIN       => 610,
+        LOGGED_IN       => 620,
+        DONE_LOGOUT     => 700,
+        NOT_LOGOUT      => 710,
+        LOGGED_OUT      => 720,
     };
 
     $self->master_hash($hash);

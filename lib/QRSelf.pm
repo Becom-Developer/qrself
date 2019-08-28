@@ -38,12 +38,12 @@ sub startup {
             $self->helper( login_user => sub {undef} );
 
             # セッション情報からログイン者の情報を取得
-            # my $params = +{ login_id => $c->session('user') };
-            # my $model = $self->model->auth->req_params($params);
+            my $params = +{ login_id => $c->session('user') };
+            my $model = $self->model->auth->req_params($params);
 
-            # if ( my $login_user = $model->session_check ) {
-            #     $self->helper( login_user => sub {$login_user} );
-            # }
+            if ( my $login_user = $model->session_check ) {
+                $self->helper( login_user => sub {$login_user} );
+            }
 
             # # 認証保護されたページ
             # if ( $url =~ m{^/auth/plugin.*} ) {

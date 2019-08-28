@@ -38,4 +38,48 @@ sub store {
     return;
 }
 
+sub login {
+    my $self        = shift;
+    my $public_path = $self->config->{public_path}->{macbeath};
+    my $params      = $self->req->params->to_hash;
+    my $model       = $self->model->auth->req_params($params);
+    my $master      = $model->db->master;
+    my $template    = 'auth/login';
+    $self->stash(
+        public_path => $public_path,
+        template    => $template,
+        format      => 'html',
+        handler     => 'ep',
+    );
+    if ( $self->req->method eq 'GET' ) {
+        $self->render();
+        return;
+    }
+    if ( my $login = $model->login ) {
+        $self->session( user => $params->{login_id} );
+        $self->flash( msg => $login->{msg} );
+        $self->redirect_to('/');
+        return;
+    }
+    $self->render_fillin( $template, $params );
+    return;
+}
+
+sub logout {
+    my $self = shift;
+    if ( $self->req->method eq 'POST' ) {
+        $self->session( expires => 1 );
+        $self->redirect_to('/');
+        return;
+    }
+    my $master = $self->model->auth->db->master;
+    $self->render(
+        msg      => $master->auth->to_word('IS_LOGOUT'),
+        template => 'auth/logout',
+        format   => 'html',
+        handler  => 'ep',
+    );
+    return;
+}
+
 1;

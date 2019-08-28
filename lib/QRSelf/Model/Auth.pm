@@ -47,4 +47,34 @@ sub store {
     return $store;
 }
 
+sub login {
+    my $self   = shift;
+    my $master = $self->db->master;
+    my $params = $self->req_params;
+    my $cond   = +{
+        login_id => $params->{login_id},
+        password => $params->{login_id},
+        deleted  => $master->deleted->constant('NOT_DELETED'),
+    };
+    my $user = $self->db->teng->single( 'user', $cond );
+    return if !$user;
+    my $login = +{
+        user => $user,
+        msg  => $master->common->to_word('DONE_LOGIN'),
+    };
+    return $login;
+}
+
+sub session_check {
+    my $self   = shift;
+    my $params = $self->req_params;
+    my $cond   = +{
+        login_id => $params->{login_id},
+        deleted  => $self->db->master->deleted->constant('NOT_DELETED'),
+    };
+    my $user = $self->db->teng->single( 'user', $cond );
+    return $user if $user;
+    return;
+}
+
 1;

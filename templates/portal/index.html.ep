@@ -1,6 +1,17 @@
 % layout 'macbeath';
 % title 'QRSelf - Top';
 
+  % if ($c->login_user) {
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <img src="/img/qrcode.png" alt="" class="img-thumbnail">
+        </div>
+      </div>
+    </div>
+  </div>
+  % } else {
   <!-- Page content starts -->
   <div class="content faq">
     <div class="container">
@@ -61,7 +72,7 @@
                 <div class="form-group">
                   <label for="inputTel" class="col-lg-2 control-label">tel</label>
                   <div class="col-lg-8">
-                    <input type="text" class="form-control" id="inputTel" placeholder="tel">
+                    <input name="login_id" type="text" class="form-control" id="inputTel" placeholder="半角数字9桁~11桁(数字のみ)">
                   </div>
                 </div>
                 <div class="form-group">
@@ -82,3 +93,4 @@
     </div>
   </div>
   <!-- Page content ends -->
+  % }

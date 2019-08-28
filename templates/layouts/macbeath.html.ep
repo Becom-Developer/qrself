@@ -42,6 +42,11 @@
             <h1><a href="/">QR<span class="color bold">Self</span></a></h1>
             <p class="meta">スマホを使ってQRコードで手軽に自己紹介</p>
             <p class=""><a href="/auth/login"></i>QRSelfアプリはこっち</a></p>
+            % if ($c->login_user) {
+            <form class="" name="form_logout" method="post" action="/auth/logout">
+              <button type="submit" class="bg-danger">[<%= $c->login_user->login_id %>]: ログアウトする</button>
+            </form>
+            % }
           </div>
         </div>
       </div>
