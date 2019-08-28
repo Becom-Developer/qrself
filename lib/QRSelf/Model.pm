@@ -1,9 +1,14 @@
 package QRSelf::Model;
 use Mojo::Base 'QRSelf::Model::Base';
 use QRSelf::Model::Portal;
+use QRSelf::Model::Auth;
 
 has portal => sub {
     QRSelf::Model::Portal->new( +{ conf => shift->conf } );
+};
+
+has auth => sub {
+    QRSelf::Model::Auth->new( +{ conf => shift->conf } );
 };
 
 # add method

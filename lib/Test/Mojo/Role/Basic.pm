@@ -6,14 +6,14 @@ use Mojo::Util qw{dumper};
 sub init {
     my $self = shift;
     $ENV{MOJO_MODE} = 'testing';
-    my $t = Test::Mojo->with_roles('+Basic')->new('QRSelf');
+    my @roles = ( '+Basic', '+Auth', '+Template' );
+    my $t     = Test::Mojo->with_roles(@roles)->new('QRSelf');
     die 'not testing mode' if $t->app->mode ne 'testing';
 
     # test DB
-    # $t->app->commands->run('generate', 'sqlitedb');
-    # $t->app->helper(
-    #     test_db => sub { QRSelf::DB->new( +{ conf => $t->app->config } ) }
-    # );
+    $t->app->commands->run( 'generate', 'sqlitedb' );
+    $t->app->helper(
+        test_db => sub { QRSelf::DB->new( +{ conf => $t->app->config } ) } );
     return $t;
 }
 

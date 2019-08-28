@@ -10,7 +10,6 @@ sub index {
         template    => $template,
         format      => 'html',
         handler     => 'ep',
-
     );
     $self->render();
     return;

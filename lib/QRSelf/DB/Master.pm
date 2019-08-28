@@ -3,6 +3,79 @@ use Mojo::Base -base;
 
 has [qw{master_hash master_constant_hash}];
 
+sub common {
+    my $self = shift;
+    my $hash = +{
+        100 => '登録しました',
+        110 => '登録できませんでした',
+        120 => '登録済みです',
+        200 => '更新しました',
+        210 => '更新できませんでした',
+        220 => '更新済みです',
+        300 => '削除しました',
+        310 => '削除できませんでした',
+        320 => '削除済みです',
+        400 => '有効な値を入力してください',
+        500 => '処理を実行しました',
+        510 => '処理をできませんでした',
+        520 => '処理済みです',
+    };
+
+    my $constant = +{
+        DONE_REGISTER   => 100,
+        NOT_REGISTER    => 110,
+        REGISTERED      => 120,
+        DONE_UPDATE     => 200,
+        NOT_UPDATE      => 210,
+        UPDATED         => 220,
+        DONE_DELETE     => 300,
+        NOT_DELETE      => 310,
+        DELETED         => 320,
+        HAS_ERROR_INPUT => 400,
+        DONE_PROC       => 500,
+        NOT_PROC        => 510,
+        PROCESSED       => 520,
+    };
+
+    $self->master_hash($hash);
+    $self->master_constant_hash($constant);
+    return $self;
+}
+
+sub limitation {
+    my $self = shift;
+    my $hash = +{
+        100 => 'システム管理者',
+        200 => '一般',
+    };
+
+    my $constant = +{
+        ROOT    => 100,
+        GENERAL => 200,
+    };
+
+    $self->master_hash($hash);
+    $self->master_constant_hash($constant);
+    return $self;
+}
+
+sub approved {
+    my $self = shift;
+    my $hash = +{
+        0 => '承認していない',
+        1 => '承認済み',
+    };
+
+    my $constant = +{
+        NOT_APPROVED => 0,
+        APPROVED     => 1,
+    };
+
+    $self->master_hash($hash);
+    $self->master_constant_hash($constant);
+    return $self;
+}
+
 sub deleted {
     my $self = shift;
     my $hash = +{

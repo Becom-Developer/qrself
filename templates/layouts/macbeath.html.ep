@@ -47,6 +47,18 @@
       </div>
     </div>
   </header>
+  <div>
+  % if ( my $msg = flash('msg') ) {
+    <div class="alert alert-warning text-center">
+      <strong><b><%== $msg =%></b></strong>
+    </div>
+  % }
+  % if ( my $msg = stash('msg') ) {
+    <div class="alert alert-warning text-center">
+      <strong><b><%== $msg =%></b></strong>
+    </div>
+  % }
+  </div>
 
   <%= content %>
 

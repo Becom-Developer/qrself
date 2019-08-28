@@ -85,14 +85,10 @@ subtest 'GET - create' => sub {
 #     ok(1);
 # };
 
-# # - POST - `/auth` - store ユーザー新規登録実行
-# subtest 'POST - store' => sub {
-#     my $url   = '/auth/create';
-#     my $title = 'QRSelf - auth create';
-#     $t->get_ok($url)->status_is(200)->text_is( 'html head title' => $title );
-#     ok(1);
-# };
-
-ok(1);
+# - POST - `/auth` - store ユーザー新規登録実行
+subtest 'POST - store' => sub {
+    my $params = +{ login_id => '08056058409', };
+    $t->create_user_ok($params);
+};
 
 done_testing();
