@@ -2,6 +2,7 @@ package QRSelf::Model;
 use Mojo::Base 'QRSelf::Model::Base';
 use QRSelf::Model::Portal;
 use QRSelf::Model::Auth;
+use QRSelf::Model::Card;
 
 has portal => sub {
     QRSelf::Model::Portal->new( +{ conf => shift->conf } );
@@ -9,6 +10,10 @@ has portal => sub {
 
 has auth => sub {
     QRSelf::Model::Auth->new( +{ conf => shift->conf } );
+};
+
+has card => sub {
+    QRSelf::Model::Card->new( +{ conf => shift->conf } );
 };
 
 # add method

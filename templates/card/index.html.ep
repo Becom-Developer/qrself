@@ -1,0 +1,44 @@
+% layout 'macbeath';
+% title 'QRSelf - card index';
+
+<!-- Page heading starts -->
+<div class="page-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>紹介カード一覧</h2>
+        <h4>登録している紹介カードの一覧</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page Heading ends -->
+<!-- Page content starts -->
+<div class="content features-two">
+  <div class="container">
+    % for my $card (@{$c->stash->{cards}}) {
+    <div class="row">
+      <div class="col-md-12">
+        <div class="feat-inner">
+          <!-- Font awesome icon -->
+          <i class="fa fa-envelope"></i>
+          <!-- Title -->
+          % if ($card->{is_standard}) {
+          <h4>このカードが標準のQRコード</h4>
+          % }
+          <!-- Para -->
+          <p>カードの名前: <%= $card->{name} %></p>
+          <!-- Button -->
+          <div class="button">
+            <a href="/card/<%= $card->{id} %>">カードの詳細へ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    % }
+  </div>
+  <div class="button">
+    <a href="/card/create">カードを追加</a>
+  </div>
+</div>
+<!-- Page content ends -->

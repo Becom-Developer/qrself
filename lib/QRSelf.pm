@@ -45,18 +45,17 @@ sub startup {
                 $self->helper( login_user => sub {$login_user} );
             }
 
-            # # 認証保護されたページ
-            # if ( $url =~ m{^/auth/plugin.*} ) {
-            #     return $c->redirect_to('/') if !$self->login_user;
-            #     return $c->redirect_to('/')
-            #         if !$self->login_user->is_admin_function;
-            # }
+            # 認証保護されたページ
+            if ( $url =~ m{^/cart.*} ) {
+                return $c->redirect_to('/') if !$self->login_user;
+            }
         }
     );
 
     # Router
     my $r    = $self->routes;
     my $u_id = [ user_id => qr/[0-9]+/ ];
+    my $c_id = [ card_id => qr/[0-9]+/ ];
 
     $r->get('/')->to('Portal#index');
 
@@ -64,16 +63,28 @@ sub startup {
     my $auth_u = $r->under('/auth');
     my $auth_d = 'Auth#';
     $auth_u->get('/create')->to( $auth_d . 'create' );
-    $auth_u->get( '/:user_id/edit', $u_id )->to( $auth_d . 'edit' );
-    $auth_u->get( '/:user_id',      $u_id )->to( $auth_d . 'show' );
+    # $auth_u->get( '/:user_id/edit', $u_id )->to( $auth_d . 'edit' );
+    # $auth_u->get( '/:user_id',      $u_id )->to( $auth_d . 'show' );
     $auth_u->get('/login')->to( $auth_d . 'login' );
     $auth_u->get('/logout')->to( $auth_d . 'logout' );
-    $auth_u->get('/remove')->to( $auth_d . 'remove' );
+    # $auth_u->get('/remove')->to( $auth_d . 'remove' );
     $auth_u->post('/login')->to( $auth_d . 'login' );
     $auth_u->post('/logout')->to( $auth_d . 'logout' );
-    $auth_u->post( '/:user_id/update', $u_id )->to( $auth_d . 'update' );
-    $auth_u->post( '/:user_id/remove', $u_id )->to( $auth_d . 'remove' );
+    # $auth_u->post( '/:user_id/update', $u_id )->to( $auth_d . 'update' );
+    # $auth_u->post( '/:user_id/remove', $u_id )->to( $auth_d . 'remove' );
     $auth_u->post('')->to( $auth_d . 'store' );
+
+    # card (自己紹介カード)
+    my $card_u = $r->under('/card');
+    my $card_d = 'Card#';
+    $card_u->get('')->to( $card_d . 'index' );
+    # $card_u->get('/create')->to( $card_d . 'create' );
+    # $card_u->get( '/:card_id/edit', $c_id )->to( $card_d . 'edit' );
+    # $card_u->get( '/:card_id',      $c_id )->to( $card_d . 'show' );
+    # $card_u->get('/remove')->to( $card_d . 'remove' );
+    # $card_u->post( '/:card_id/update', $c_id )->to( $card_d . 'update' );
+    # $card_u->post( '/:card_id/remove', $c_id )->to( $card_d . 'remove' );
+    # $card_u->post('')->to( $card_d . 'store' );
 }
 
 1;
