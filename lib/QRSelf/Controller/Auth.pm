@@ -22,18 +22,18 @@ sub store {
     my $model       = $self->model->auth->req_params($params);
     my $master      = $model->db->master;
     my $template    = 'auth/create';
-    $self->stash(
-        public_path => $public_path,
-        msg         => $master->common->to_word('HAS_ERROR_INPUT'),
-        format      => 'html',
-        handler     => 'ep',
-    );
     if ( my $store = $model->store ) {
         $self->session( user => $params->{login_id} );
         $self->flash( msg => $store->{msg} );
         $self->redirect_to("/");
         return;
     }
+    $self->stash(
+        public_path => $public_path,
+        msg         => $master->common->to_word('HAS_ERROR_INPUT'),
+        format      => 'html',
+        handler     => 'ep',
+    );
     $self->render_fillin( $template, $params );
     return;
 }
@@ -61,6 +61,7 @@ sub login {
         $self->redirect_to('/');
         return;
     }
+    $self->stash( msg => $master->common->to_word('NOT_LOGIN') );
     $self->render_fillin( $template, $params );
     return;
 }
@@ -74,7 +75,7 @@ sub logout {
     }
     my $master = $self->model->auth->db->master;
     $self->render(
-        msg      => $master->auth->to_word('IS_LOGOUT'),
+        msg      => $master->common->to_word('IS_LOGOUT'),
         template => 'auth/logout',
         format   => 'html',
         handler  => 'ep',

@@ -10,7 +10,6 @@ subtest 'GET - create' => sub {
     my $url   = '/auth/create';
     my $title = 'QRSelf - auth create';
     $t->get_ok($url)->status_is(200)->text_is( 'html head title' => $title );
-    ok(1);
 };
 
 # # - GET - `/auth/:id/edit` - edit ユーザー情報更新画面
@@ -29,13 +28,12 @@ subtest 'GET - create' => sub {
 #     ok(1);
 # };
 
-# # - GET - `/auth/login` - login ログイン入力画面
-# subtest 'GET - login' => sub {
-#     my $url   = '/auth/login';
-#     my $title = 'QRSelf - auth login';
-#     $t->get_ok($url)->status_is(200)->text_is( 'html head title' => $title );
-#     ok(1);
-# };
+# - GET - `/auth/login` - login ログイン入力画面
+subtest 'GET - login' => sub {
+    my $url   = '/auth/login';
+    my $title = 'QRSelf - auth login';
+    $t->get_ok($url)->status_is(200)->text_is( 'html head title' => $title );
+};
 
 # # - GET - `/auth/logout` - logout ユーザーログアウト画面
 # subtest 'GET - logout' => sub {
@@ -53,7 +51,7 @@ subtest 'GET - create' => sub {
 #     ok(1);
 # };
 
-# # - POST - `/auth/login` - login ユーザーログイン実行
+# - POST - `/auth/login` - login ユーザーログイン実行
 # subtest 'POST - login' => sub {
 #     my $url   = '/auth/login';
 #     my $title = 'QRSelf - auth login';
