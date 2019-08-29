@@ -1,5 +1,6 @@
 local/
-log/
+log/*.log
 db/*.db
 .DS_Store
 public/img/qrcode/*.png
+script/*.pid
