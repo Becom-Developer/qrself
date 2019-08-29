@@ -59,6 +59,11 @@ sub startup {
 
     $r->get('/')->to('Portal#index');
 
+    # portal card (公開カード)
+    my $potal_c_u = $r->under('/portal/card');
+    my $potal_c_d = 'Portal::Card#';
+    $potal_c_u->get( '/:card_id', $c_id )->to( $potal_c_d . 'show' );
+
     # auth (認証)
     my $auth_u = $r->under('/auth');
     my $auth_d = 'Auth#';

@@ -123,6 +123,65 @@ sub fetch_card_icon {
     return $card_item_relation->fetch_card_icon;
 }
 
+
+# カード情報の詳細
+# my $card_show = +{
+#     card          => $card,
+#     card_name     => $card_name,
+#     card_group    => $card_group,
+#     card_contact  => $card_contact,
+#     card_address  => $card_address,
+#     card_personal => $card_personal,
+#     card_note     => $card_note,
+#     card_icon     => $card_icon,
+# };
+sub get_card_show {
+    my $self = shift;
+    my $opt  = shift || +{};
+    my $attr = shift || +{};
+    my $cond = +{
+        card_id => $self->id,
+        deleted => 0,
+        %{$opt},
+    };
+
+    my $params = +{
+        card          => +{},
+        card_name     => +{},
+        card_group    => +{},
+        card_contact  => +{},
+        card_address  => +{},
+        card_personal => +{},
+        card_note     => +{},
+        card_icon     => +{},
+    };
+
+    $params->{card} = $self->get_columns;
+
+    if ( my $card_name_row = $self->fetch_card_name ) {
+        $params->{card_name} = $card_name_row->get_columns;
+    }
+    if ( my $card_group_row = $self->fetch_card_group ) {
+        $params->{card_group} = $card_group_row->get_columns;
+    }
+    if ( my $card_contact_row = $self->fetch_card_contact ) {
+        $params->{card_contact} = $card_contact_row->get_columns;
+    }
+    if ( my $card_address_row = $self->fetch_card_address ) {
+        $params->{card_address} = $card_address_row->get_columns;
+    }
+    if ( my $card_personal_row = $self->fetch_card_personal ) {
+        $params->{card_personal} = $card_personal_row->get_columns;
+    }
+    if ( my $card_note_row = $self->fetch_card_note ) {
+        $params->{card_note} = $card_note_row->get_columns;
+    }
+    if ( my $card_icon_row = $self->fetch_card_icon ) {
+        $params->{card_icon} = $card_icon_row->get_columns;
+    }
+    return $params;
+}
+
 1
 
 __END__
