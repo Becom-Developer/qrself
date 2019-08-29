@@ -56,13 +56,11 @@ subtest 'POST - login' => sub {
     $t->reset_session;
 };
 
-# # - POST - `/auth/logout` - logout ユーザーログアウト実行
-# subtest 'POST - logout' => sub {
-#     my $url   = '/auth/logout';
-#     my $title = 'QRSelf - auth logout';
-#     $t->post_ok($url)->status_is(200)->text_is( 'html head title' => $title );
-#     ok(1);
-# };
+# - POST - `/auth/logout` - logout ユーザーログアウト実行
+subtest 'POST - logout' => sub {
+    $t->login_ok();
+    $t->logout_ok();
+};
 
 # # - POST - `/auth/:id/update` - update ユーザー情報更新実行
 # subtest 'POST - update' => sub {

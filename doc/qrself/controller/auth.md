@@ -61,6 +61,8 @@ qrself/controller/auth - QRSelf (認証)
 # - POST - `/auth/logout` - logout ユーザーログアウト実行
 
 ```
+ログアウト実行
+成功: 実行してログアウト画面へ遷移
 ```
 
 # - POST - `/auth/:id/update` - update ユーザー情報更新実行

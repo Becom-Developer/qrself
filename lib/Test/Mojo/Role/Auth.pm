@@ -37,30 +37,30 @@ sub login_ok {
     return $t;
 }
 
-# sub logout_ok {
-#     my $t = shift;
+sub logout_ok {
+    my $t = shift;
 
-#     # ログアウトボタンの存在する画面(ログイン中のみ)
-#     $t->get_ok('/')->status_is(200);
+    # ログアウトボタンの存在する画面(ログイン中のみ)
+    $t->get_ok('/')->status_is(200);
 
-#     my $dom        = $t->tx->res->dom;
-#     my $form       = 'form[name=form_logout]';
-#     my $action_url = $dom->at($form)->attr('action');
-#     my $master     = $t->app->test_db->master;
+    my $dom        = $t->tx->res->dom;
+    my $form       = 'form[name=form_logout]';
+    my $action_url = $dom->at($form)->attr('action');
+    my $master     = $t->app->test_db->master;
 
-#     # ログアウト実行
-#     $t->post_ok($action_url)->status_is(302);
-#     my $location_url = $t->tx->res->headers->location;
-#     $t->get_ok($location_url)->status_is(200);
+    # ログアウト実行
+    $t->post_ok($action_url)->status_is(302);
+    my $location_url = $t->tx->res->headers->location;
+    $t->get_ok($location_url)->status_is(200);
 
-#     # 成功画面
-#     my $msg = $master->auth->to_word('IS_LOGOUT');
-#     $t->content_like(qr{\Q<b>$msg</b>\E});
+    # 成功画面
+    my $msg = $master->common->to_word('DONE_LOGOUT');
+    $t->content_like(qr{\Q<b>$msg</b>\E});
 
-#     # セッション確認
-#     is( $t->tx->res->cookie('mojolicious'), undef, 'session' );
-#     return $t;
-# }
+    # セッション確認
+    is( $t->tx->res->cookie('mojolicious'), undef, 'session' );
+    return $t;
+}
 
 sub create_user_ok {
     my $t      = shift;
