@@ -143,6 +143,21 @@ sub get_card_show {
     return $params;
 }
 
+sub get_standard_qrcord {
+    my $self = shift;
+    my $opt  = shift || +{};
+    my $attr = shift || +{};
+    my $cond = +{
+        user_id     => $self->id,
+        is_standard => 1,
+        deleted     => 0,
+        %{$opt},
+    };
+    my $card_rows = $self->search_card( $cond, $attr );
+    my $card_row  = shift @{$card_rows};
+    return $card_row->qrcord;
+}
+
 1
 
 __END__

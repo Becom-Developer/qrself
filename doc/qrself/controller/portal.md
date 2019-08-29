@@ -6,7 +6,7 @@ qrself/controller/portal - QRSelf (サービス紹介ページ)
 
 ## URL
 
-- GET - `/potal` - index サービス紹介ペーシ
+- GET - `/portal` - index サービス紹介ペーシ
 
 # DESCRIPTION
 
@@ -16,7 +16,7 @@ qrself/controller/portal - QRSelf (サービス紹介ページ)
 認証なし
 ```
 
-# - GET - `/potal` - index サービス紹介ペーシ
+# - GET - `/portal` - index サービス紹介ペーシ
 
 ```
 アプリの紹介文を掲載する

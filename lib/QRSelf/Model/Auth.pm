@@ -16,6 +16,14 @@ sub store {
     my $master = $self->db->master;
     return if $self->has_error_easy();
 
+    # すでにある電話番号はつかえない
+    my $user_search = +{
+        login_id => $self->req_params->{login_id},
+        deleted  => $master->deleted->constant('NOT_DELETED'),
+    };
+    my $user_valid_row = $self->db->teng->single( 'user', $user_search );
+    return if $user_valid_row;
+
     my $user_params = +{
         login_id => $self->req_params->{login_id},
         password => $self->req_params->{login_id},
@@ -31,6 +39,7 @@ sub store {
     };
     my $limitation_id
         = $self->db->teng_fast_insert( 'limitation', $limitation_params );
+
     my $card_params = +{
         user_id     => $user_id,
         name        => 'standard',
@@ -39,6 +48,13 @@ sub store {
         deleted     => $master->deleted->constant('NOT_DELETED'),
     };
     my $card_id = $self->db->teng_fast_insert( 'card', $card_params );
+    my $qrcord  = $self->create_qrcode($card_id);
+
+    my $card_update_params = +{ qrcord => $qrcord, };
+    my $card_update_cond   = +{ id     => $card_id, };
+    my $card_update_id = $self->db->teng_update( 'card', $card_update_params,
+        $card_update_cond );
+
     $txn->commit;
     my $store = +{
         user_id => $user_id,
