@@ -7,57 +7,60 @@ sub login_ok {
     my $t       = shift;
     my $user_id = shift || 1;
     my $master  = $t->app->test_db->master;
-    my $msg     = $master->auth->to_word('IS_LOGIN');
+    my $msg     = $master->common->to_word('DONE_LOGIN');
 
-    # # 権限指定でログイン
-    # my $status = [qw{ROOT SUDO ADMIN GENERAL GUEST}];
-    # my @login = grep {$_ eq $user_id} @{$status};
-    # my $limit_status = shift @login;
-    # my $cond = +{ id => $user_id, };
-    # if ($limit_status) {
-    #     my $name = lc $limit_status;
-    #     my $login_id = 'iteens.' . $name . '@gmail.com';
-    #     $cond = +{ login_id => $login_id, };
-    # }
-    # my $user = $t->app->test_db->teng->single( 'user', $cond );
-    # if ($limit_status) {
-    #     is( $user->fetch_limit_status,
-    #         $master->limitation->constant($limit_status), 'status' );
-    # }
-    # my $login_id = $user->login_id;
-    # my $password = $user->password;
+    my $cond     = +{ id => $user_id, };
+    my $user     = $t->app->test_db->teng->single( 'user', $cond );
+    my $login_id = $user->login_id;
+    my $password = $user->password;
 
-    # # セッションを開始
-    # $t->get_ok('/')->status_is(200);
+    # セッション開始から確認
+    $t->get_ok('/')->status_is(200);
+    is( $t->tx->res->cookie('mojolicious'), undef, 'session' );
 
-    # # セッション確認
-    # is( $t->tx->res->cookie('mojolicious'), undef, 'session' );
+    # ログイン画面
+    $t->get_ok('/auth/login')->status_is(200);
+    my $dom        = $t->tx->res->dom;
+    my $form       = 'form[name=form_login]';
+    my $action_url = $dom->at($form)->attr('action');
 
-    # # ログイン画面
-    # $t->get_ok('/auth/login')->status_is(200);
-    # my $dom        = $t->tx->res->dom;
-    # my $form       = 'form[name=form_login]';
-    # my $action_url = $dom->at($form)->attr('action');
+    # 値の入力から取得
+    $dom->at('input[name=login_id]')->attr( +{ value => $login_id } );
+    my $params = $t->get_input_val( $dom, $form );
 
-    # # 値を入力
-    # $dom->at('input[name=login_id]')->attr( +{ value => $login_id } );
-    # $dom->at('input[name=password]')->attr( +{ value => $password } );
-
-    # # input val 取得
-    # my $params = $t->get_input_val( $dom, $form );
-
-    # # ログイン実行
-    # $t->post_ok( $action_url => form => $params )->status_is(302);
-    # my $location_url = $t->tx->res->headers->location;
-    # $t->get_ok($location_url)->status_is(200);
-
-    # # 成功画面
-    # $t->content_like(qr{\Q<b>$msg</b>\E});
-
-    # # セッション確認
-    # ok( $t->tx->res->cookie('mojolicious'), 'session' );
+    # ログイン実行からセッション確認
+    $t->post_ok( $action_url => form => $params )->status_is(302);
+    my $location_url = $t->tx->res->headers->location;
+    $t->get_ok($location_url)->status_is(200);
+    $t->content_like(qr{\Q<b>$msg</b>\E});
+    ok( $t->tx->res->cookie('mojolicious'), 'session' );
     return $t;
 }
+
+# sub logout_ok {
+#     my $t = shift;
+
+#     # ログアウトボタンの存在する画面(ログイン中のみ)
+#     $t->get_ok('/')->status_is(200);
+
+#     my $dom        = $t->tx->res->dom;
+#     my $form       = 'form[name=form_logout]';
+#     my $action_url = $dom->at($form)->attr('action');
+#     my $master     = $t->app->test_db->master;
+
+#     # ログアウト実行
+#     $t->post_ok($action_url)->status_is(302);
+#     my $location_url = $t->tx->res->headers->location;
+#     $t->get_ok($location_url)->status_is(200);
+
+#     # 成功画面
+#     my $msg = $master->auth->to_word('IS_LOGOUT');
+#     $t->content_like(qr{\Q<b>$msg</b>\E});
+
+#     # セッション確認
+#     is( $t->tx->res->cookie('mojolicious'), undef, 'session' );
+#     return $t;
+# }
 
 sub create_user_ok {
     my $t      = shift;

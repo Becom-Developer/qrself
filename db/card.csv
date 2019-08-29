@@ -1,0 +1,3 @@
+ID,ユーザーID,名前,QRコード画像リンク,標準フラグ,削除フラグ,登録日時,修正日時
+id,user_id,name,qrcord,is_standard,deleted,created_ts,modified_ts
+1,1,営業用カード,qrcode.png,1,0,2019-08-29 11:50:57,2019-08-29 11:50:57

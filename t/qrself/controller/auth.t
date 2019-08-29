@@ -52,12 +52,10 @@ subtest 'GET - login' => sub {
 # };
 
 # - POST - `/auth/login` - login ユーザーログイン実行
-# subtest 'POST - login' => sub {
-#     my $url   = '/auth/login';
-#     my $title = 'QRSelf - auth login';
-#     $t->post_ok($url)->status_is(200)->text_is( 'html head title' => $title );
-#     ok(1);
-# };
+subtest 'POST - login' => sub {
+    $t->login_ok();
+    $t->reset_session;
+};
 
 # # - POST - `/auth/logout` - logout ユーザーログアウト実行
 # subtest 'POST - logout' => sub {
