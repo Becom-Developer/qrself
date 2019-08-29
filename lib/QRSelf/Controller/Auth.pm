@@ -67,18 +67,20 @@ sub login {
 }
 
 sub logout {
-    my $self = shift;
+    my $self        = shift;
+    my $public_path = $self->config->{public_path}->{macbeath};
     if ( $self->req->method eq 'POST' ) {
         $self->session( expires => 1 );
-        $self->redirect_to('/');
+        $self->redirect_to('/auth/logout');
         return;
     }
     my $master = $self->model->auth->db->master;
     $self->render(
-        msg      => $master->common->to_word('IS_LOGOUT'),
-        template => 'auth/logout',
-        format   => 'html',
-        handler  => 'ep',
+        public_path => $public_path,
+        msg         => $master->common->to_word('DONE_LOGOUT'),
+        template    => 'auth/logout',
+        format      => 'html',
+        handler     => 'ep',
     );
     return;
 }

@@ -45,6 +45,7 @@ qrself/controller/auth - QRSelf (認証)
 # - GET - `/auth/logout` - logout ユーザーログアウト画面
 
 ```
+ログアウト実行後に表示
 ```
 
 # - GET - `/auth/remove` - remove ユーザー削除画面

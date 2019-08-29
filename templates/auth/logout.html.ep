@@ -1,0 +1,64 @@
+% layout 'macbeath';
+% title 'QRSelf - auth logout';
+
+<!-- Page heading starts -->
+<div class="page-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>ログアウト画面</h2>
+        <h4>アプリを使いたいときはログインしてください</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page Heading ends -->
+<!-- Page content starts -->
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Some content -->
+        <h3 class="title">ログインは電話番号で <span class="color">!!!</span></h3>
+        <h4>電話番号のみ</h4>
+        <p>サンプル版につき試験的に携帯電話番号の入力だけで登録を実施してます</p>
+        <h5>サンプル版につき制限があります</h5>
+        <ul>
+          <li>電話番号のみでの認証になります(サンプル版につき)</li>
+          <li>今後は電話番号入力後、電話番号のショートメッセージにパスワードが送信される予定です</li>
+        </ul>
+        <p>このアプリは携帯電話を所有している人を対象としているアプリです</p>
+      </div>
+      <!-- Login form -->
+      <div class="col-md-6">
+        <div class="formy well">
+          <!-- Title -->
+          <h4 class="title">ログイン</h4>
+          <p>&nbsp;</p>
+          <div class="form">
+            <!-- Login form (not working)-->
+            <form name="form_login" action="/auth/login" method="post" class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="inputTel" class="col-lg-2 control-label">tel</label>
+                <div class="col-lg-8">
+                  <input name="login_id" type="text" class="form-control" id="inputTel" placeholder="半角数字9桁~11桁(数字のみ)">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                  <button type="submit" class="btn btn-default">ログイン実行</button>
+                  <button type="reset" class="btn btn-default">リセット</button>
+                </div>
+              </div>
+            </form>
+            <hr />
+            <h5>アカウント新規登録</h5>
+            <!-- Register link -->
+            アカウントを持っていない人はこちらから <a href="/auth/create">新しく登録</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page content ends -->

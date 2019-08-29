@@ -35,13 +35,12 @@ subtest 'GET - login' => sub {
     $t->get_ok($url)->status_is(200)->text_is( 'html head title' => $title );
 };
 
-# # - GET - `/auth/logout` - logout ユーザーログアウト画面
-# subtest 'GET - logout' => sub {
-#     my $url   = '/auth/logout';
-#     my $title = 'QRSelf - auth logout';
-#     $t->get_ok($url)->status_is(200)->text_is( 'html head title' => $title );
-#     ok(1);
-# };
+# - GET - `/auth/logout` - logout ユーザーログアウト画面
+subtest 'GET - logout' => sub {
+    my $url   = '/auth/logout';
+    my $title = 'QRSelf - auth logout';
+    $t->get_ok($url)->status_is(200)->text_is( 'html head title' => $title );
+};
 
 # # - GET - `/auth/remove` - remove ユーザー削除画面
 # subtest 'GET - remove' => sub {
