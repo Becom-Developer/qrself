@@ -5,8 +5,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
+          <a class="btn btn-success btn-lg btn-block" href="/card/<%= $c->stash->{card}->{id} %>">カード詳細</a>
           <img src="/img/qrcode/<%= $c->stash->{card}->{qrcode} %>" alt="" class="img-thumbnail">
-          <div class="button text-center"><a href="/card/<%= $c->stash->{card}->{id} %>">カード詳細</a></div>
         </div>
       </div>
     </div>

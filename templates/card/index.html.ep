@@ -16,29 +16,31 @@
 <!-- Page content starts -->
 <div class="content features-two">
   <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a class="btn btn-success btn-lg btn-block" href="/card/<%= $c->stash->{card}->{id} %>">トップページへ</a>
+        <a class="btn btn-danger btn-lg btn-block" href="/card/create">カードを追加</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
     % for my $card (@{$c->stash->{cards}}) {
     <div class="row">
       <div class="col-md-12">
         <div class="feat-inner">
-          <!-- Font awesome icon -->
-          <i class="fa fa-envelope"></i>
+          <!-- Button -->
+          <a class="btn btn-success btn-lg btn-block" href="/card/<%= $card->{id} %>">カードの詳細へ</a>
+
           <!-- Title -->
           % if ($card->{is_standard}) {
           <h4>このカードが標準のQRコード</h4>
           % }
           <!-- Para -->
           <p>カードの名前: <%= $card->{name} %></p>
-          <!-- Button -->
-          <div class="button">
-            <a href="/card/<%= $card->{id} %>">カードの詳細へ</a>
-          </div>
         </div>
       </div>
     </div>
     % }
-  </div>
-  <div class="button">
-    <a href="/card/create">カードを追加</a>
   </div>
 </div>
 <!-- Page content ends -->

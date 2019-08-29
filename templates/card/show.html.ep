@@ -16,6 +16,9 @@
 <!-- Page content starts -->
 <div class="content features-two">
   <div class="container">
+    <a class="btn btn-success btn-lg btn-block" href="/card/<%= $c->stash->{card}->{id} %>/qr">QRコードを表示</a>
+    <a class="btn btn-warning btn-lg btn-block" href="/card">カードの一覧</a>
+    <a class="btn btn-danger btn-lg btn-block" href="/card/<%= $c->stash->{card}->{id} %>/edit">カードの編集</a>
     <!-- - カード項目 - card -->
     <div class="row">
       <div class="col-md-12">
@@ -247,11 +250,6 @@
       </div>
     </div>
 
-  </div>
-  <div class="button">
-    <a href="/card">カードの一覧</a>
-    <a href="/card/<%= $c->stash->{card}->{id} %>/edit">カードの編集</a>
-    <a href="/card/<%= $c->stash->{card}->{id} %>/qr">QRコードを表示</a>
   </div>
 </div>
 <!-- Page content ends -->
