@@ -43,14 +43,14 @@ sub store {
     my $card_params = +{
         user_id     => $user_id,
         name        => 'standard',
-        qrcord      => '',
+        qrcode      => '',
         is_standard => 1,
         deleted     => $master->deleted->constant('NOT_DELETED'),
     };
     my $card_id = $self->db->teng_fast_insert( 'card', $card_params );
-    my $qrcord  = $self->create_qrcode($card_id);
+    my $qrcode  = $self->create_qrcode($card_id);
 
-    my $card_update_params = +{ qrcord => $qrcord, };
+    my $card_update_params = +{ qrcode => $qrcode, };
     my $card_update_cond   = +{ id     => $card_id, };
     my $card_update_id = $self->db->teng_update( 'card', $card_update_params,
         $card_update_cond );

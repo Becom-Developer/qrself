@@ -14,10 +14,17 @@ subtest 'GET - index' => sub {
     $t->logout_ok();
 };
 
-# # - GET - `/card/:id/qr` - qr 自己紹介ページのQRコード表示
-# subtest 'GET - qr' => sub {
-#     ok(1);
-# };
+# - GET - `/card/:id/qr` - qr 自己紹介ページのQRコード表示
+subtest 'GET - qr' => sub {
+    $t->login_ok();
+    my $card_rows = $t->app->login_user->search_card;
+    my $card_row  = shift @{$card_rows};
+    my $card_id   = $card_row->id;
+    my $url       = "/card/$card_id/qr";
+    my $title     = 'QRSelf - card QRCode';
+    $t->get_ok($url)->status_is(200)->text_is( 'html head title' => $title );
+    $t->logout_ok();
+};
 
 # - GET - `/card/:id` - show 自己紹介ページ
 subtest 'GET - show' => sub {

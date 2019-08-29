@@ -42,7 +42,7 @@ sub create_qrcode {
     my $img       = $qrcode->plot($url);
     my $home      = Mojo::Home->new;
     my $file      = easy_filename('qrcode.png');
-    my $file_name = $home->child( 'public', 'img', $file )->to_string;
+    my $file_name = $home->child( 'public', 'img', 'qrcode', $file )->to_string;
 
     if ( $self->conf->{mode} ne 'testing' ) {
         $img->write( file => $file_name )

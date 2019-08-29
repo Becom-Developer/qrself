@@ -143,7 +143,7 @@ sub get_card_show {
     return $params;
 }
 
-sub get_standard_qrcord {
+sub get_standard_qrcode {
     my $self = shift;
     my $opt  = shift || +{};
     my $attr = shift || +{};
@@ -155,7 +155,7 @@ sub get_standard_qrcord {
     };
     my $card_rows = $self->search_card( $cond, $attr );
     my $card_row  = shift @{$card_rows};
-    return $card_row->qrcord;
+    return $card_row->qrcode;
 }
 
 1

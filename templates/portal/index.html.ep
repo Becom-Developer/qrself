@@ -6,7 +6,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <img src="/img/<%= $c->login_user->get_standard_qrcord %>" alt="" class="img-thumbnail">
+          <img src="/img/qrcode/<%= $c->login_user->get_standard_qrcode %>" alt="" class="img-thumbnail">
           <div class="button text-center"><a href="/card">登録カード一覧へ</a></div>
         </div>
       </div>

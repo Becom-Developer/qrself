@@ -22,7 +22,7 @@ CREATE TABLE card (                                     -- 紹介カード
     id              INTEGER PRIMARY KEY AUTOINCREMENT,  -- ID (例: 5)
     user_id         INTEGER,                            -- ユーザーID (例: 5)
     name            TEXT,                               -- 名前 (例: '会社の営業用紹介カード')
-    qrcord          TEXT,                               -- QRコード画像リンク (例: 'qrcord.png')
+    qrcode          TEXT,                               -- QRコード画像リンク (例: 'qrcode.png')
     is_standard     INTEGER,                            -- 標準フラグ (例: 0: 標準カードではない, 1: 標準カードである)
     deleted         INTEGER,                            -- 削除フラグ (例: 0: 削除していない, 1: 削除済み)
     created_ts      TEXT,                               -- 登録日時 (例: '2019-08-22 17:01:29')

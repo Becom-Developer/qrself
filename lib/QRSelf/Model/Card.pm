@@ -23,6 +23,17 @@ sub to_template_show {
     return $template;
 }
 
+sub to_template_qr {
+    my $self     = shift;
+    my $template = +{ card => +{}, };
+    my $card_id  = $self->req_params->{card_id};
+    my $cond     = +{ id => $card_id, deleted => 0 };
+    my $card_row = $self->db->teng->single( 'card', $cond );
+    return $template if !$card_row;
+    $template->{card} = $card_row->get_columns;
+    return $template;
+}
+
 1;
 
 __END__
