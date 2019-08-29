@@ -19,10 +19,17 @@ subtest 'GET - index' => sub {
 #     ok(1);
 # };
 
-# # - GET - `/card/:id` - show 自己紹介ページ
-# subtest 'GET - show' => sub {
-#     ok(1);
-# };
+# - GET - `/card/:id` - show 自己紹介ページ
+subtest 'GET - show' => sub {
+    $t->login_ok();
+    my $card_rows = $t->app->login_user->search_card;
+    my $card_row  = shift @{$card_rows};
+    my $card_id   = $card_row->id;
+    my $url       = "/card/$card_id";
+    my $title     = 'QRSelf - card show';
+    $t->get_ok($url)->status_is(200)->text_is( 'html head title' => $title );
+    $t->logout_ok();
+};
 
 # # - GET - `/card/create` - create 自己紹介ページ新規作成画面
 # subtest 'GET - create' => sub {
@@ -48,6 +55,5 @@ subtest 'GET - index' => sub {
 # subtest 'POST - remove' => sub {
 #     ok(1);
 # };
-
 
 done_testing();

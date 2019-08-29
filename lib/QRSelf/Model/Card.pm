@@ -16,4 +16,34 @@ sub to_template_index {
     return $template;
 }
 
+sub to_template_show {
+    my $self      = shift;
+    my $login_row = $self->req_params->{login_row};
+    my $template  = $login_row->get_card_show;
+    return $template;
+}
+
 1;
+
+__END__
+
+該当のユーザーのカード情報一覧
+my $card_index = +{
+    user       => $user,
+    limitation => $limitation,
+    cards      => [ $card, ],
+};
+
+カード情報の詳細
+my $card_show = +{
+    user          => $user,
+    limitation    => $limitation,
+    card          => $card,
+    card_name     => $card_name,
+    card_group    => $card_group,
+    card_contact  => $card_contact,
+    card_address  => $card_address,
+    card_personal => $card_personal,
+    card_note     => $card_note,
+    card_icon     => $card_icon,
+};

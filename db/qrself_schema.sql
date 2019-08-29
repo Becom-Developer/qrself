@@ -31,7 +31,7 @@ CREATE TABLE card (                                     -- 紹介カード
 DROP TABLE IF EXISTS card_item_relation;
 CREATE TABLE card_item_relation (                               -- 紹介カードの項目と項目内容の関係
     id                      INTEGER PRIMARY KEY AUTOINCREMENT,  -- ID (例: 5)
-    cart_id                 INTEGER,                            -- 紹介カードID (例: 1)
+    card_id                 INTEGER,                            -- 紹介カードID (例: 1)
     card_name_id            INTEGER,                            -- 紹介カードにつかう名前情報ID (例: 1)
     card_group_id           INTEGER,                            -- 紹介カードにつかう団体情報ID (例: 1)
     card_contact_id         INTEGER,                            -- 紹介カードにつかう連絡先情報ID (例: 1)
