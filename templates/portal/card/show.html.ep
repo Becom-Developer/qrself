@@ -13,6 +13,78 @@
   </div>
 </div>
 <!-- Page Heading ends -->
+
+
+<!-- Page content starts -->
+<div class="content">
+  <div class="container">
+    % if ($c->login_user) {
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Some content -->
+        <h3 class="title text-center">仲間情報に登録するとカードの整理ができる <span class="color">!!!</span></h3>
+        <h4>紙の名刺は整理が大変ですよね</h4>
+        <p>紹介カードの情報は相手が更新するのでつねに最新の状態</p>
+        <h5>サンプル版につき制限があります</h5>
+        <ul>
+          <li>仲間のカテゴリー機能は現在検討中です</li>
+          <li>今後はアイコン別にカテゴリーするなど使いやすい仕様にしていきます</li>
+        </ul>
+        <p>このアプリは携帯電話を所有している人を対象としているアプリです</p>
+      </div>
+    </div>
+    <a class="btn btn-info btn-lg btn-block" href="/card/<%= $c->stash->{card}->{id} %>/edit">仲間情報に登録</a>
+    % } else {
+    <div class="row">
+      <!-- Form -->
+      <div class="col-md-6">
+        <h3 class="title text-center">新規登録はここから</h3>
+        <div class="formy well">
+          <!-- Title -->
+          <h4 class="title">新規ユーザー登録</h4>
+          <p>&nbsp;</p>
+          <div class="form">
+            <!-- Register form (not working)-->
+            <form name="form_store" action="/auth" method="post" class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="inputTel" class="col-lg-2 control-label">tel</label>
+                <div class="col-lg-8">
+                  <input name="login_id" type="text" class="form-control" id="inputTel" placeholder="半角数字9桁~11桁(数字のみ)">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                  <button type="submit" class="btn btn-default">登録実行</button>
+                  <button type="reset" class="btn btn-default">リセット</button>
+                </div>
+              </div>
+            </form>
+            <hr />
+            アカウントを持っている人はこちらからログインしてください <a href="/auth/login">ログイン</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <!-- Some content -->
+        <h3 class="title">電話番号だけで簡単登録 <span class="color">!!!</span></h3>
+        <h4>ログインのIDやパスワード、忘れたりしませんか?</h4>
+        <p>メールアドレスを複数持っていたり、twitterアカウントや、Facebookアカウントなど、どれで登録したか忘れがちですよね?</p>
+        <h5>サンプル版につき制限があります</h5>
+        <ul>
+          <li>電話番号のみでの認証になります(サンプル版につき)</li>
+          <li>今後は電話番号入力後、電話番号のショートメッセージにパスワードが送信される予定です</li>
+        </ul>
+        <p>このアプリは携帯電話を所有している人を対象としているアプリです</p>
+      </div>
+    </div>
+    % }
+
+    <a class="btn btn-success btn-lg btn-block" href="/">トップページへ</a>
+  </div>
+</div>
+<!-- Page content ends -->
+
+
 <!-- Page content starts -->
 <div class="content features-two">
   <div class="container">
@@ -243,12 +315,6 @@
         </div>
       </div>
     </div>
-
   </div>
-  % if ($c->login_user) {
-  <div class="button">
-    <a href="/card/<%= $c->stash->{card}->{id} %>/edit">仲間情報に登録</a>
-  </div>
-  % }
 </div>
 <!-- Page content ends -->
