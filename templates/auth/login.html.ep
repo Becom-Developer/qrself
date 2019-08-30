@@ -17,20 +17,11 @@
 <div class="content">
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
-        <!-- Some content -->
-        <h3 class="title">ログインは電話番号で <span class="color">!!!</span></h3>
-        <h4>電話番号のみ</h4>
-        <p>サンプル版につき試験的に携帯電話番号の入力だけで登録を実施してます</p>
-        <h5>サンプル版につき制限があります</h5>
-        <ul>
-          <li>電話番号のみでの認証になります(サンプル版につき)</li>
-          <li>今後は電話番号入力後、電話番号のショートメッセージにパスワードが送信される予定です</li>
-        </ul>
-        <p>このアプリは携帯電話を所有している人を対象としているアプリです</p>
-      </div>
       <!-- Login form -->
       <div class="col-md-6">
+        <!-- Some content -->
+        <h3 class="title text-center">ログインはここから</h3>
+
         <div class="formy well">
           <!-- Title -->
           <h4 class="title">ログイン</h4>
@@ -58,7 +49,20 @@
           </div>
         </div>
       </div>
+      <div class="col-md-6">
+        <!-- Some content -->
+        <h3 class="title">ログインは電話番号で <span class="color">!!!</span></h3>
+        <h4>電話番号のみ</h4>
+        <p>サンプル版につき試験的に携帯電話番号の入力だけで登録を実施してます</p>
+        <h5>サンプル版につき制限があります</h5>
+        <ul>
+          <li>電話番号のみでの認証になります(サンプル版につき)</li>
+          <li>今後は電話番号入力後、電話番号のショートメッセージにパスワードが送信される予定です</li>
+        </ul>
+        <p>このアプリは携帯電話を所有している人を対象としているアプリです</p>
+      </div>
     </div>
+    <a class="btn btn-success btn-lg btn-block" href="/">トップページへ</a>
   </div>
 </div>
 <!-- Page content ends -->

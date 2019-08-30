@@ -49,8 +49,15 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
+        <h3 class="title text-center">ここからアプリ登録(ログイン)</h3>
+
+          <a class=" btn btn-info btn-lg btn-block" href="/auth/login">ログイン画面へ</a>
+          <a class=" btn btn-danger btn-lg btn-block" href="/auth/create">新規登録画面へ</a>
+        </div>
+
+        <div class="col-md-6">
           <!-- Some content -->
-          <h3 class="title">すぐにはじめられるよ <span class="color">!!!</span></h3>
+          <h3 class="title text-center">すぐにはじめられるよ <span class="color">!!!</span></h3>
           <h4>電話番号のみ</h4>
           <p>サンプル版につき試験的に携帯電話番号の入力だけで登録を実施してます</p>
           <h5>無料アカウントと有料アカウントがあります</h5>
@@ -61,35 +68,7 @@
           </ul>
           <p>こんな有料機能があるとうれしいなどご意見をいただけるととても助かります</p>
         </div>
-        <!-- Login form -->
-        <div class="col-md-6">
-          <div class="formy well">
-            <!-- Title -->
-            <h4 class="title">ログイン</h4>
-            <p>&nbsp;</p>
-            <div class="form">
-              <!-- Login form (not working)-->
-              <form name="form_login" action="/auth/login" method="post" class="form-horizontal" role="form">
-                <div class="form-group">
-                  <label for="inputTel" class="col-lg-2 control-label">tel</label>
-                  <div class="col-lg-8">
-                    <input name="login_id" type="text" class="form-control" id="inputTel" placeholder="半角数字9桁~11桁(数字のみ)">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-lg-offset-2 col-lg-10">
-                    <button type="submit" class="btn btn-default">ログイン実行</button>
-                    <button type="reset" class="btn btn-default">リセット</button>
-                  </div>
-                </div>
-              </form>
-              <hr />
-              <h5>アカウント新規登録</h5>
-              <!-- Register link -->
-              アカウントを持っていない人はこちらから <a href="/auth/create">新しく登録</a>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
