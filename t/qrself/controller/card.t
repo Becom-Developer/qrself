@@ -52,10 +52,13 @@ subtest 'GET - create' => sub {
 #     ok(1);
 # };
 
-# # - POST - `/card` - store 自己紹介ページ新規登録
-# subtest 'POST - store' => sub {
-#     ok(1);
-# };
+# - POST - `/card` - store 自己紹介ページ新規登録
+subtest 'POST - store' => sub {
+    $t->login_ok();
+    my $params = +{ name => '仕事用のカード', };
+    $t->create_card_ok($params);
+    $t->logout_ok();
+};
 
 # # - POST - `/card/:id/update` - update 自己紹介ページ編集実行
 # subtest 'POST - update' => sub {

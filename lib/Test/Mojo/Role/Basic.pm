@@ -6,7 +6,7 @@ use Mojo::Util qw{dumper};
 sub init {
     my $self = shift;
     $ENV{MOJO_MODE} = 'testing';
-    my @roles = ( '+Basic', '+Auth', '+Template' );
+    my @roles = ( '+Basic', '+Auth', '+Template', '+Card' );
     my $t     = Test::Mojo->with_roles(@roles)->new('QRSelf');
     die 'not testing mode' if $t->app->mode ne 'testing';
 

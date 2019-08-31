@@ -39,6 +39,33 @@ sub create {
     return;
 }
 
+sub store {
+    my $self        = shift;
+    my $public_path = $self->config->{public_path}->{macbeath};
+    my $template    = 'card/create';
+    my $params      = $self->req->params->to_hash;
+    $params->{login_row} = $self->login_user;
+    my $model       = $self->model->card->req_params($params);
+    my $master      = $model->db->master;
+    my $to_template = $model->to_template_create;
+
+    if ( my $store = $model->store ) {
+        my $card_id = $store->{card_id};
+        $self->flash( msg => $store->{msg} );
+        $self->redirect_to("/card/$card_id");
+        return;
+    }
+    $self->stash(
+        %{$to_template},
+        public_path => $public_path,
+        msg         => $master->common->to_word('HAS_ERROR_INPUT'),
+        format      => 'html',
+        handler     => 'ep',
+    );
+    $self->render_fillin( $template, $params );
+    return;
+}
+
 sub show {
     my $self        = shift;
     my $public_path = $self->config->{public_path}->{macbeath};
