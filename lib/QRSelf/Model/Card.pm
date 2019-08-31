@@ -16,6 +16,12 @@ sub to_template_index {
     return $template;
 }
 
+sub to_template_create {
+    my $self     = shift;
+    my $template = +{};
+    return $template;
+}
+
 sub to_template_show {
     my $self      = shift;
     my $login_row = $self->req_params->{login_row};

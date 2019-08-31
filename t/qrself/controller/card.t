@@ -38,10 +38,14 @@ subtest 'GET - show' => sub {
     $t->logout_ok();
 };
 
-# # - GET - `/card/create` - create 自己紹介ページ新規作成画面
-# subtest 'GET - create' => sub {
-#     ok(1);
-# };
+# - GET - `/card/create` - create 自己紹介ページ新規作成画面
+subtest 'GET - create' => sub {
+    $t->login_ok();
+    my $url   = "/card/create";
+    my $title = 'QRSelf - card create';
+    $t->get_ok($url)->status_is(200)->text_is( 'html head title' => $title );
+    $t->logout_ok();
+};
 
 # # - GET - `/card/:id/edit` - edit 自己紹介ページ編集画面
 # subtest 'GET - edit' => sub {
