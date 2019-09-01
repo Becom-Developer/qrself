@@ -20,6 +20,7 @@
       <div class="col-md-12">
         <a class="btn btn-success btn-lg btn-block" href="/">トップページへ</a>
         <a class="btn btn-danger btn-lg btn-block" href="/card/create">カードを追加</a>
+        <a class="btn btn-info btn-lg btn-block" href="/card/item">カードでつかえる項目一覧</a>
       </div>
     </div>
   </div>

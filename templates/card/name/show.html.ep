@@ -18,10 +18,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <a class="btn btn-success btn-lg btn-block" href="/card/">カード一覧</a>
+        <a class="btn btn-success btn-lg btn-block" href="/card/item">カード項目一覧</a>
       </div>
       <div class="col-md-12">
-        <h3 class="title text-center">新規登録はここから</h3>
+        <h3 class="title text-center"></h3>
         <div class="formy well">
           <!-- Title -->
           <h4 class="title">名前情報</h4>
@@ -33,19 +33,19 @@
               <div class="form-group">
                 <label for="inputName" class="col-lg-2 control-label">名前</label>
                 <div class="col-lg-8">
-                  <input name="name" type="text" class="form-control" id="inputName" placeholder="例: 松野 おそ松" readonry>
+                  <input name="name" type="text" class="form-control" id="inputName" placeholder="例: 松野 おそ松" readonly="">
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputRubi" class="col-lg-2 control-label">ふりがな</label>
                 <div class="col-lg-8">
-                  <input name="rubi" type="text" class="form-control" id="inputRubi" placeholder="例: まつの おそまつ">
+                  <input name="rubi" type="text" class="form-control" id="inputRubi" placeholder="例: まつの おそまつ" readonly="">
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputNickname" class="col-lg-2 control-label">ニックネーム</label>
                 <div class="col-lg-8">
-                  <input name="nickname" type="text" class="form-control" id="inputNickname" placeholder="例: ジーパン刑事">
+                  <input name="nickname" type="text" class="form-control" id="inputNickname" placeholder="例: ジーパン刑事" readonly="">
                 </div>
               </div>
             </form>

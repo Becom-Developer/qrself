@@ -30,6 +30,12 @@ sub to_template_index {
     return $template;
 }
 
+sub to_template_item {
+    my $self     = shift;
+    my $template = +{};
+    return $template;
+}
+
 sub to_template_create {
     my $self     = shift;
     my $template = +{};

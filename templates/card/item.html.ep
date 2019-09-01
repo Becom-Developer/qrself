@@ -1,0 +1,58 @@
+% layout 'macbeath';
+% title 'QRSelf - card item';
+
+<!-- Page heading starts -->
+<div class="page-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>カード項目一覧</h2>
+        <h4>紹介カードでつかえる項目一覧</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page Heading ends -->
+<!-- Page content starts -->
+<div class="content features-two">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a class="btn btn-success btn-lg btn-block" href="/card">カード一覧へもどる</a>
+      </div>
+
+    </div>
+    <!-- - カード項目 - card_name -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="formy well">
+          <!-- Title -->
+          <h4 class="title">名前情報</h4>
+          <p>&nbsp;</p>
+          <a class="btn btn-info btn-lg btn-block" href="/card/name/create">新規登録</a>
+        </div>
+      </div>
+    </div>
+    <!-- - カード項目 - card_group -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="formy well">
+          <!-- Title -->
+          <h4 class="title">所属情報</h4>
+          <p>&nbsp;</p>
+          <a class="btn btn-info btn-lg btn-block" href="/card/group/create">新規登録</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- - カード項目 - card_contact -->
+
+  <!-- - カード項目 - card_address -->
+
+  <!-- - カード項目 - card_personal -->
+
+  <!-- - カード項目 - card_note -->
+
+  <!-- - カード項目 - card_icon -->
+</div>
+<!-- Page content ends -->

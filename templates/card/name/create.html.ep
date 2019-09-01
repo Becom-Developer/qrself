@@ -18,7 +18,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <a class="btn btn-success btn-lg btn-block" href="/card/<%= $c->stash->{card_id} %>/edit">カード編集へもどる</a>
+        <a class="btn btn-success btn-lg btn-block" href="/card/item">カード項目一覧へもどる</a>
       </div>
       <div class="col-md-12">
         <h3 class="title text-center">新規登録はここから</h3>
@@ -29,7 +29,6 @@
           <div class="form">
             <!-- Register form (not working)-->
             <form name="form_store" action="/card/name" method="post" class="form-horizontal" role="form">
-              <input name="card_id" type="hidden" value="<%= $c->stash->{card_id} %>">
               <div class="form-group">
                 <label for="inputName" class="col-lg-2 control-label">名前</label>
                 <div class="col-lg-8">

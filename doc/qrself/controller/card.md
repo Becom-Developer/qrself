@@ -7,6 +7,7 @@ qrself/controller/card - QRSelf (自己紹介カード)
 ## URL
 
 - GET - `/card` - index 自己紹介カードの一覧
+- GET - `/card/item` - item 自己紹介カードでつかえる項目の一覧
 - GET - `/card/:id/qr` - qr 自己紹介ページのQRコード表示
 - GET - `/card/:id` - show 自己紹介ページ
 - GET - `/card/create` - create 自己紹介ページ新規作成画面
@@ -28,6 +29,12 @@ qrself/controller/card - QRSelf (自己紹介カード)
 ```
 登録済み紹介カードリスト
 リンク: 追加, 詳細
+```
+
+# - GET - `/card/item` - item 自己紹介カードでつかえる項目の一覧
+
+```
+カードでつかえる項目の一覧
 ```
 
 # - GET - `/card/:id/qr` - qr 自己紹介ページのQRコード表示

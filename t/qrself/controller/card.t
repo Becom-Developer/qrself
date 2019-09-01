@@ -14,6 +14,15 @@ subtest 'GET - index' => sub {
     $t->logout_ok();
 };
 
+# - GET - `/card/item` - item 自己紹介カードでつかえる項目の一覧
+subtest 'GET - index' => sub {
+    my $url   = '/card/item';
+    my $title = 'QRSelf - card item';
+    $t->login_ok();
+    $t->get_ok($url)->status_is(200)->text_is( 'html head title' => $title );
+    $t->logout_ok();
+};
+
 # - GET - `/card/:id/qr` - qr 自己紹介ページのQRコード表示
 subtest 'GET - qr' => sub {
     $t->login_ok();
