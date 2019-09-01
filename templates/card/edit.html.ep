@@ -1,0 +1,49 @@
+% layout 'macbeath';
+% title 'QRSelf - card edit';
+
+<!-- Page heading starts -->
+<div class="page-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>紹介カード編集</h2>
+        <h4>紹介カードの編集をします</h4>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page Heading ends -->
+<!-- Page content starts -->
+<div class="content features-two">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a class="btn btn-success btn-lg btn-block" href="/card/<%= $c->stash->{card}->{id} %>">カード詳細</a>
+      </div>
+      <div class="col-md-12">
+        <h3 class="title text-center">カードの編集はここから</h3>
+        <div class="formy well">
+          <!-- Title -->
+          <h4 class="title">紹介カード編集</h4>
+          <p>&nbsp;</p>
+          <div class="form">
+            <!-- Register form (not working)-->
+            <form name="form_update" action="/card/<%= $c->stash->{card}->{id} %>/update" method="post" class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="inputName" class="col-lg-2 control-label">カードの名前</label>
+                <div class="col-lg-8">
+                  <input name="name" type="text" class="form-control" id="inputName" placeholder="例: 仕事用のカード">
+                </div>
+              </div>
+              <button  class="btn btn-danger btn-lg btn-block" type="submit" class="btn btn-default">更新実行</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+
+  </div>
+</div>
+<!-- Page content ends -->

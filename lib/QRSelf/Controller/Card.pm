@@ -39,6 +39,26 @@ sub create {
     return;
 }
 
+sub edit {
+    my $self        = shift;
+    my $public_path = $self->config->{public_path}->{macbeath};
+    my $template    = 'card/edit';
+    my $params      = $self->req->params->to_hash;
+    $params->{login_row} = $self->login_user;
+    my $model       = $self->model->card->req_params($params);
+    my $master      = $model->db->master;
+    my $to_template = $model->to_template_edit;
+    $self->stash(
+        %{$to_template},
+        public_path => $public_path,
+        format      => 'html',
+        handler     => 'ep',
+    );
+    my $render_params = $to_template->{card};
+    $self->render_fillin( $template, $render_params );
+    return;
+}
+
 sub store {
     my $self        = shift;
     my $public_path = $self->config->{public_path}->{macbeath};

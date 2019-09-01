@@ -66,6 +66,12 @@ sub to_template_show {
     return $template;
 }
 
+sub to_template_edit {
+    my $self     = shift;
+    my $template = $self->to_template_show;
+    return $template;
+}
+
 sub to_template_qr {
     my $self     = shift;
     my $template = +{ card => +{}, };

@@ -86,12 +86,10 @@ sub startup {
     my $card_u = $r->under('/card');
     my $card_d = 'Card#';
     $card_u->get('')->to( $card_d . 'index' );
-
     $card_u->get('/create')->to( $card_d . 'create' );
-
-    # $card_u->get( '/:card_id/edit', $c_id )->to( $card_d . 'edit' );
-    $card_u->get( '/:card_id',    $c_id )->to( $card_d . 'show' );
-    $card_u->get( '/:card_id/qr', $c_id )->to( $card_d . 'qr' );
+    $card_u->get( '/:card_id/edit', $c_id )->to( $card_d . 'edit' );
+    $card_u->get( '/:card_id',      $c_id )->to( $card_d . 'show' );
+    $card_u->get( '/:card_id/qr',   $c_id )->to( $card_d . 'qr' );
 
     # $card_u->get('/remove')->to( $card_d . 'remove' );
     # $card_u->post( '/:card_id/update', $c_id )->to( $card_d . 'update' );
