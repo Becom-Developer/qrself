@@ -35,15 +35,43 @@
                   <input name="name" type="text" class="form-control" id="inputName" placeholder="例: 仕事用のカード">
                 </div>
               </div>
-              <button  class="btn btn-danger btn-lg btn-block" type="submit" class="btn btn-default">更新実行</button>
+              <button class="btn btn-danger btn-lg btn-block" type="submit" class="btn btn-default">更新実行</button>
             </form>
           </div>
         </div>
       </div>
     </div>
+    <!-- - カード項目 - card_name -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="formy well">
+          <!-- Title -->
+          <h4 class="title">名前情報</h4>
+          <p>&nbsp;</p>
+          <a class="btn btn-success btn-lg btn-block" href="/card/name/create?card_id=<%= $c->stash->{card}->{id} %>">新規登録</a>
+        </div>
+      </div>
+    </div>
+    <!-- - カード項目 - card_group -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="formy well">
+          <!-- Title -->
+          <h4 class="title">所属情報</h4>
+          <p>&nbsp;</p>
+          <a class="btn btn-success btn-lg btn-block" href="/card/group/create">新規登録</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="container">
+  <!-- - カード項目 - card_contact -->
 
-  </div>
+  <!-- - カード項目 - card_address -->
+
+  <!-- - カード項目 - card_personal -->
+
+  <!-- - カード項目 - card_note -->
+
+  <!-- - カード項目 - card_icon -->
 </div>
 <!-- Page content ends -->

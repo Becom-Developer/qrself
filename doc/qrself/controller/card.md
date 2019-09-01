@@ -21,7 +21,6 @@ qrself/controller/card - QRSelf (自己紹介カード)
 
 ```
 ログイン中のみアクセス可能
-show 自己紹介ページのみ認証なしでもアクセス
 ```
 
 # - GET - `/card` - index 自己紹介カードの一覧

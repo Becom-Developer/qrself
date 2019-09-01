@@ -56,6 +56,7 @@ sub startup {
     my $r    = $self->routes;
     my $u_id = [ user_id => qr/[0-9]+/ ];
     my $c_id = [ card_id => qr/[0-9]+/ ];
+    my $c_n_id = [ card_name_id => qr/[0-9]+/ ];
 
     $r->get('/')->to('Portal#index');
 
@@ -95,6 +96,16 @@ sub startup {
     $card_u->post( '/:card_id/update', $c_id )->to( $card_d . 'update' );
     # $card_u->post( '/:card_id/remove', $c_id )->to( $card_d . 'remove' );
     $card_u->post('')->to( $card_d . 'store' );
+
+    # card name (名前項目)
+    my $card_n_u = $r->under('/card/name');
+    my $card_n_d = 'Card::Name#';
+    $card_n_u->get('/create')->to( $card_n_d . 'create' );
+    $card_n_u->get( '/:card_name_id/edit', $c_n_id )->to( $card_n_d . 'edit' );
+    $card_n_u->get( '/:card_name_id',      $c_n_id )->to( $card_n_d . 'show' );
+    $card_n_u->post( '/:card_name_id/update', $c_n_id )->to( $card_n_d . 'update' );
+    $card_n_u->post( '/:card_name_id/remove', $c_n_id )->to( $card_n_d . 'remove' );
+    $card_n_u->post('')->to( $card_n_d . 'store' );
 }
 
 1;

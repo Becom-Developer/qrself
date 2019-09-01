@@ -1,5 +1,10 @@
 package QRSelf::Model::Card;
 use Mojo::Base 'QRSelf::Model::Base';
+use QRSelf::Model::Card::Name;
+
+has name => sub {
+    QRSelf::Model::Card::Name->new( +{ conf => shift->conf } );
+};
 
 sub has_error_easy {
     my $self   = shift;
