@@ -92,7 +92,7 @@ sub startup {
     $card_u->get( '/:card_id/qr',   $c_id )->to( $card_d . 'qr' );
 
     # $card_u->get('/remove')->to( $card_d . 'remove' );
-    # $card_u->post( '/:card_id/update', $c_id )->to( $card_d . 'update' );
+    $card_u->post( '/:card_id/update', $c_id )->to( $card_d . 'update' );
     # $card_u->post( '/:card_id/remove', $c_id )->to( $card_d . 'remove' );
     $card_u->post('')->to( $card_d . 'store' );
 }

@@ -45,6 +45,7 @@ sub edit {
     my $template    = 'card/edit';
     my $params      = $self->req->params->to_hash;
     $params->{login_row} = $self->login_user;
+    $params->{card_id}   = $self->stash->{card_id};
     my $model       = $self->model->card->req_params($params);
     my $master      = $model->db->master;
     my $to_template = $model->to_template_edit;
@@ -86,12 +87,41 @@ sub store {
     return;
 }
 
+sub update {
+    my $self        = shift;
+    my $public_path = $self->config->{public_path}->{macbeath};
+    my $template    = 'card/edit';
+    my $params      = $self->req->params->to_hash;
+    $params->{login_row} = $self->login_user;
+    $params->{card_id}   = $self->stash->{card_id};
+    my $model       = $self->model->card->req_params($params);
+    my $master      = $model->db->master;
+    my $to_template = $model->to_template_create;
+
+    if ( my $update = $model->update ) {
+        my $card_id = $update->{card_id};
+        $self->flash( msg => $update->{msg} );
+        $self->redirect_to("/card/$card_id");
+        return;
+    }
+    $self->stash(
+        %{$to_template},
+        public_path => $public_path,
+        msg         => $master->common->to_word('HAS_ERROR_INPUT'),
+        format      => 'html',
+        handler     => 'ep',
+    );
+    $self->render_fillin( $template, $params );
+    return;
+}
+
 sub show {
     my $self        = shift;
     my $public_path = $self->config->{public_path}->{macbeath};
     my $template    = 'card/show';
     my $params      = $self->req->params->to_hash;
     $params->{login_row} = $self->login_user;
+    $params->{card_id}   = $self->stash->{card_id};
     my $model       = $self->model->card->req_params($params);
     my $to_template = $model->to_template_show;
     $self->stash(

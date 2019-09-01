@@ -59,16 +59,37 @@ sub store {
     return $store;
 }
 
+sub update {
+    my $self   = shift;
+    my $master = $self->db->master;
+    return if $self->has_error_easy();
+
+    my $txn         = $self->db->teng->txn_scope;
+    my $params      = +{ name => $self->req_params->{name}, };
+    my $card_id     = $self->req_params->{card_id};
+    my $update_cond = +{ id => $card_id, };
+    my $update_id   = $self->db->teng_update( 'card', $params, $update_cond );
+    $txn->commit;
+    my $update = +{
+        card_id => $update_id,
+        msg     => $master->common->to_word('DONE_UPDATE'),
+    };
+    return $update;
+}
+
 sub to_template_show {
-    my $self      = shift;
-    my $login_row = $self->req_params->{login_row};
-    my $template  = $login_row->get_card_show;
+    my $self     = shift;
+    my $card_row = $self->db->teng->single( 'card',
+        +{ id => $self->req_params->{card_id} } );
+    my $template = $card_row->get_card_show;
     return $template;
 }
 
 sub to_template_edit {
     my $self     = shift;
-    my $template = $self->to_template_show;
+    my $card_row = $self->db->teng->single( 'card',
+        +{ id => $self->req_params->{card_id} } );
+    my $template = $card_row->get_card_show;
     return $template;
 }
 
