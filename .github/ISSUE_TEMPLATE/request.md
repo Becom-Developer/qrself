@@ -1,9 +1,6 @@
 ---
 name: Request
 about: 開発の要望があった場合
-title: テストタイトル
-labels: ''
-assignees: ''
 
 ---
 
