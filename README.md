@@ -2,13 +2,13 @@
 
 qrself - QRコードを使って自己紹介をするアプリ
 
-# SYNOPSIS
+## SYNOPSIS
 
-## URL
+### URL
 
 - <https://qrself.becom.co.jp/> - 開発版
 
-## SETUP
+### SETUP
 
 のちほどまとめる
 
@@ -211,9 +211,9 @@ $ cd ~/qrself/ && git pull && carton exec -- hypnotoad script/qrself
 $ curl -v https://qrself.becom.co.jp
 ```
 
-## START APP
+### START APP
 
-# TODO
+## TODO
 
 開発メモ
 
@@ -431,7 +431,11 @@ CREATE TABLE friend_category_relation (                         -- 仲間情報�
 );
 ```
 
-# SEE ALSO
+## MEMO
+
+2020/08/12: 開発再開の見通しがたたないため、公開サーバーの利用を中止
+
+## SEE ALSO
 
 - <https://metacpan.org/pod/Imager::QRCode> -
 - <https://www.qrcode.com/> -
